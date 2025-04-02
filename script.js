@@ -1,28 +1,45 @@
-// script.js
-let display = document.getElementById('display');
-let currentInput = '';
-
-function appendToDisplay(value) {
-    if (currentInput === '0' && !isNaN(value)) {
-        currentInput = value; // Replace '0' with the new number
-    } else {
-        currentInput += value; // Append the new value
-    }
-    display.innerText = currentInput;
+/* General styling */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f3f3f3;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-function clearDisplay() {
-    currentInput = '0';
-    display.innerText = currentInput;
+.container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
 }
 
-function calculateResult() {
-    try {
-        // Evaluate the expression in the display
-        currentInput = eval(currentInput).toString();
-        display.innerText = currentInput;
-    } catch (error) {
-        display.innerText = 'Error';
-        currentInput = '0'; // Reset after error
-    }
+input, select, button {
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #4c60af;
+    color: white;
+    cursor: pointer;
+    border: none;
+}
+
+button:hover {
+    background-color: #5645a0;
+}
+
+#result {
+    margin-top: 20px;
+    font-weight: bold;
 }
