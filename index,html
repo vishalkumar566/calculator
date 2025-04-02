@@ -3,31 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Basic Calculator</title>
+    <title>Temperature Converter</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div class="container">
+        <h1>Temperature Converter</h1>
 
-<div id="calculator">
-    <div id="display">0</div>
-    <button onclick="clearDisplay()">C</button>
-    <button onclick="appendToDisplay('/')">/</button>
-    <button onclick="appendToDisplay('')"></button>
-    <button onclick="appendToDisplay('-')">-</button>
-    <button onclick="appendToDisplay('7')">7</button>
-    <button onclick="appendToDisplay('8')">8</button>
-    <button onclick="appendToDisplay('9')">9</button>
-    <button onclick="appendToDisplay('+')">+</button>
-    <button onclick="appendToDisplay('4')">4</button>
-    <button onclick="appendToDisplay('5')">5</button>
-    <button onclick="appendToDisplay('6')">6</button>
-    <button onclick="calculateResult()">=</button>
-    <button onclick="appendToDisplay('1')">1</button>
-    <button onclick="appendToDisplay('2')">2</button>
-    <button onclick="appendToDisplay('3')">3</button>
-    <button onclick="appendToDisplay('0')">0</button>
-</div>
+        <input type="number" id="inputTemperature" placeholder="Enter temperature">
 
-<script src="script.js"></script>
+        <div>
+            <label for="unit">Select Unit:</label>
+            <select id="unit">
+                <option value="celsius">Celsius</option>
+                <option value="fahrenheit">Fahrenheit</option>
+                <option value="kelvin">Kelvin</option>
+            </select>
+        </div>
+
+        <button id="convertButton">Convert</button>
+
+        <div id="result">
+            <p>Converted Temperature: <span id="outputTemperature"></span></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
