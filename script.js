@@ -1,45 +1,33 @@
-/* General styling */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f3f3f3;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
+document.getElementById("convertButton").addEventListener("click", function() {
+    let inputTemperature = document.getElementById("inputTemperature").value;
+    let unit = document.getElementById("unit").value;
+    let outputTemperature = document.getElementById("outputTemperature");
 
-.container {
-    background-color: #fff;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-    width: 300px;
-    text-align: center;
-}
+    // Validate if the input is a number
+    if (isNaN(inputTemperature) || inputTemperature.trim() === "") {
+        outputTemperature.textContent = "Please enter a valid number!";
+        return;
+    }
 
-input, select, button {
-    margin: 10px 0;
-    padding: 10px;
-    width: 100%;
-    font-size: 16px;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-}
+    // Convert the input to a floating-point number
+    inputTemperature = parseFloat(inputTemperature);
+    let convertedTemp = "";
 
-button {
-    background-color: #4c60af;
-    color: white;
-    cursor: pointer;
-    border: none;
-}
+    // Perform temperature conversions
+    if (unit === "celsius") {
+        let fahrenheit = (inputTemperature * 9/5) + 32;
+        let kelvin = inputTemperature + 273.15;
+        convertedTemp = `${fahrenheit.toFixed(2)} °F / ${kelvin.toFixed(2)} K`;
+    } else if (unit === "fahrenheit") {
+        let celsius = (inputTemperature - 32) * 5/9;
+        let kelvin = (inputTemperature - 32) * 5/9 + 273.15;
+        convertedTemp = `${celsius.toFixed(2)} °C / ${kelvin.toFixed(2)} K`;
+    } else if (unit === "kelvin") {
+        let celsius = inputTemperature - 273.15;
+        let fahrenheit = (inputTemperature - 273.15) * 9/5 + 32;
+        convertedTemp = `${celsius.toFixed(2)} °C / ${fahrenheit.toFixed(2)} °F`;
+    }
 
-button:hover {
-    background-color: #5645a0;
-}
-
-#result {
-    margin-top: 20px;
-    font-weight: bold;
-}
+    // Display the result
+    outputTemperature.textContent = convertedTemp;
+});
